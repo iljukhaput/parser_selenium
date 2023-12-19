@@ -1,4 +1,5 @@
 import sys
+import time
 from bs4 import BeautifulSoup
 import pandas as pd
 from selenium.webdriver.common.by import By
@@ -39,14 +40,15 @@ def write_data(data, file_name):
 def pars(driver):
     waiting_time = 5
     wait = WebDriverWait(driver, waiting_time)
-    table = wait.until(EC.presence_of_element_located((By.ID, 'livePreTable')))
+    table = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '#livePreTable')))
+    time.sleep(2)
     if not table.is_displayed():
-        print(driver.page_source + ": the table was not displayed")
+        print("the table was not displayed")
         sys.exit(1)
 
     data = get_data(driver)
     file_name = 'final_prices.csv'
     write_data_done = write_data(data, file_name)
     if not write_data_done:
-        print(driver.page_source + ": there is no data from the table")
+        print("there is no data from the table")
         sys.exit(1)

@@ -1,3 +1,4 @@
+import time
 from selenium.webdriver.common.by import By
 import parser
 import user_scenario
@@ -9,7 +10,7 @@ def test_task():
     driver.get(interface.start_page)
     interface.wait_banner(driver)  # close banner if it is displayed
     interface.hover_to_element(driver)  # hover to MARKET DATA
-    driver.find_element(By.LINK_TEXT, 'Pre-Open Market').click()
+    driver.find_element(By.CSS_SELECTOR, '#main_navbar > ul > li:nth-child(3) > div > div.container > div > div:nth-child(1) > ul > li:nth-child(1) > a').click()
 
     parser.pars(driver)  # parsing to csv file
 

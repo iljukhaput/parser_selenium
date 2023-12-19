@@ -4,9 +4,9 @@ import time
 
 
 def user_scenario(driver):
-    driver.find_element(By.ID, 'link_0').click()  # go to home page
+    driver.find_element(By.CSS_SELECTOR, '#link_0').click()  # go to home page
     interface.wait_banner(driver)  # close banner if it is displayed
-    driver.find_element(By.ID, "NIFTY BANK").click()  # choose graph "NIFTY BANK"
+    driver.find_element(By.CSS_SELECTOR, "#NIFTY\ BANK").click()  # choose graph "NIFTY BANK"
     time.sleep(1)
 
     # scroll to graph
@@ -15,13 +15,13 @@ def user_scenario(driver):
     driver.execute_script("window.scrollBy(0, 250);")  # additionally scroll down to see the button
 
     time.sleep(1)
-    driver.find_element(By.LINK_TEXT, "View All").click()
+    element.click()
 
     time.sleep(1)
     interface.input_selector(driver)  # choose in selector "NIFTY ALPHA 50"
 
     # scroll down
     time.sleep(1)
-    element = driver.find_element(By.ID, "marketWatchEquityCmsNote")
+    element = driver.find_element(By.CSS_SELECTOR, "#marketWatchEquityCmsNote")
     interface.scroll_to_element(driver, element)
     time.sleep(3)

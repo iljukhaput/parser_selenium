@@ -29,7 +29,7 @@ def init_driver():
 
 
 def input_selector(driver):
-    element = driver.find_element(By.ID, 'equitieStockSelect')
+    element = driver.find_element(By.CSS_SELECTOR, '#equitieStockSelect')
     selector = Select(element)
     selector.select_by_visible_text('NIFTY ALPHA 50')
 
@@ -45,7 +45,7 @@ def wait_banner(driver):
     waiting_time = 3
     wait = WebDriverWait(driver, waiting_time)
     try:
-        element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="myModal"]/div/div')))
+        element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '#myModal > div > div')))
         close_btn = element.find_element(By.CLASS_NAME, 'close')
         close_btn.click()
         time.sleep(3)
@@ -54,7 +54,7 @@ def wait_banner(driver):
 
 
 def hover_to_element(driver):
-    hover = driver.find_element(By.ID, 'link_2')
+    hover = driver.find_element(By.CSS_SELECTOR, '#link_2')
     actions = ActionChains(driver)
     actions.move_to_element(hover)
     actions.perform()
